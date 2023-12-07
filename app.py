@@ -399,13 +399,17 @@ df = df.drop(columns=['num_years_antig', 'forecast_cons_year'])
 # Modélisation
 df_model = df.copy()
 
-df_copy = df_model.drop(['Unnamed: 0', 'id', 'price_date_x', 'price_date_y', 'price_date', 'date_activ',
+#df_copy = df_model.drop(['Unnamed: 0', 'id', 'price_date_x', 'price_date_y', 'price_date', 'date_activ',
+#                         'date_end', 'date_modif_prod', 'date_renewal'], axis=1)
+df_copy = df_model.drop(['id', 'price_date_x', 'price_date_y', 'price_date', 'date_activ',
                          'date_end', 'date_modif_prod', 'date_renewal'], axis=1)
 train_df = df_copy.copy()
 
 # Separate target variable from independent variables
 y = df_model['churn']
-X = df_model.drop(columns=['id', 'churn', 'Unnamed: 0', 'price_date_x', 'price_date_y', 'price_date', 'date_activ',
+#X = df_model.drop(columns=['id', 'churn', 'Unnamed: 0', 'price_date_x', 'price_date_y', 'price_date', 'date_activ',
+#                          'date_end', 'date_modif_prod', 'date_renewal' ])
+X = df_model.drop(columns=['id', 'churn', 'price_date_x', 'price_date_y', 'price_date', 'date_activ',
                            'date_end', 'date_modif_prod', 'date_renewal' ])
 #print(X.shape)
 #print(y.shape)
