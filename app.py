@@ -227,10 +227,10 @@ price_analysis = pd.merge(price_features, client_df[['id', 'churn']], on='id')
 # Calcul de la matrice de corrélation
 price_analysis_copy = price_analysis.drop('id', axis=1)
 merged_data = pd.merge(client_df.drop(columns=['churn']), price_analysis, on='id')
-merged_data.to_csv('clean_data_after_eda.csv')
+#merged_data.to_csv('clean_data_after_eda.csv')
 
 #Feature Engineering
-df = pd.read_csv('clean_data_after_eda.csv')
+df = merged_data.copy()
 df["date_activ"] = pd.to_datetime(df["date_activ"], format='%Y-%m-%d')
 df["date_end"] = pd.to_datetime(df["date_end"], format='%Y-%m-%d')
 df["date_modif_prod"] = pd.to_datetime(df["date_modif_prod"], format='%Y-%m-%d')
@@ -394,10 +394,10 @@ skewed_after = df[skewed].describe()
 
 
 df = df.drop(columns=['num_years_antig', 'forecast_cons_year'])
-df.to_csv("data_after_featuring.csv", index=False)
+#df.to_csv("data_after_featuring.csv", index=False)
 
 # Modélisation
-df_model = pd.read_csv('data_after_featuring.csv')
+df_model = df.copy()
 
 df_copy = df_model.drop(['Unnamed: 0', 'id', 'price_date_x', 'price_date_y', 'price_date', 'date_activ',
                          'date_end', 'date_modif_prod', 'date_renewal'], axis=1)
@@ -429,11 +429,11 @@ X_test.drop(columns='index', inplace=True)
 X_test['churn'] = predictions.tolist()
 X_test['churn_probability'] = probabilities.tolist()
 
-X_test.to_csv('./out_of_sample_data_with_predictions.csv')
+#X_test.to_csv('./out_of_sample_data_with_predictions.csv')
 
 # impact business de la remise
 
-test_df = pd.read_csv('out_of_sample_data_with_predictions.csv')
+test_df = X_test.copy()
 # Le chiffre d'affaires d'électricité pour chaque client est composé de la consommation d'énergie (quantité * prix)
 # et du loyer du compteur
 # (Le prix de l'électricité peut également jouer un rôle, mais nous allons l'ignorer pour l'instant car nous avons
