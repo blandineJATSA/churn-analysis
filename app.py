@@ -1205,14 +1205,14 @@ De plus, quelle est l'impact de prédire des cas négatifs comme positifs (perso
 Il s'agit simplement d'un exemple, mais il illustre pourquoi d'autres métriques de performance sont nécessaires, telles que la précision et le rappel, qui sont de bonnes mesures à utiliser dans un scénario de classification..""")
 
 
-    print(f"True positives: {tp}")
-    print(f"False positives: {fp}")
-    print(f"True negatives: {tn}")
-    print(f"False negatives: {fn}\n")
+    st.write(f"True positives: {tp}")
+    st.write(f"False positives: {fp}")
+    st.write(f"True negatives: {tn}")
+    st.write(f"False negatives: {fn}\n")
 
-    print(f"Accuracy: {metrics.accuracy_score(y_test, predictions)}")
-    print(f"Precision: {metrics.precision_score(y_test, predictions)}")
-    print(f"Recall: {metrics.recall_score(y_test, predictions)}")
+    st.write(f"Accuracy: {metrics.accuracy_score(y_test, predictions)}")
+    st.write(f"Precision: {metrics.precision_score(y_test, predictions)}")
+    st.write(f"Recall: {metrics.recall_score(y_test, predictions)}")
 
     st.markdown(""" En examinant ces résultats, quelques points à souligner :
 
