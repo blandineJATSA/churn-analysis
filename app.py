@@ -786,10 +786,10 @@ if selected_option == "Exploration des Hypothèses":
 
     # Affichage du graphique dans Streamlit en passant explicitement la figure
     st.pyplot(fig)
-    st.write(""" D'après le graphique de corrélation, il montre une plus grande intensité de corrélation entre les
+    st.markdown(""" D'après le graphique de corrélation, il montre une plus grande intensité de corrélation entre les
      autres variables de sensibilité au prix, cependant, dans l'ensemble, la corrélation avec le désabonnement est
-      très faible. Cela indique qu'il existe une faible relation linéaire entre la sensibilité au prix et 
-      le désabonnement. Cela suggère que, pour que la sensibilité au prix soit un facteur majeur dans la prédiction
+      très faible. Cela indique qu'il ** existe une faible relation linéaire entre la sensibilité au prix et 
+      le désabonnement**. Cela suggère que, pour que la sensibilité au prix soit un facteur majeur dans la prédiction
        du taux d'attrition, nous devrons peut-être modifier la transformation des caracteristiques correspondantes.""")
 
     st.dataframe(merged_data.head(3))
@@ -919,7 +919,7 @@ if selected_option == "Feature Engineering":
     df = pd.merge(df, max_diff_across_periods_months[columns], on='id')"""
     st.code(code_price, language="python")
 
-    st.write(""" Nous avons pener que calculer la variation maximale des prix entre les mois et les périodes serait
+    st.write(""" Nous avons penser que calculer la variation maximale des prix entre les mois et les périodes serait
      une bonne caractéristique à créer, car j'essayais de réfléchir du point de vue d'un client de PowerCo. 
      En tant que client des services publics, rien n'est plus agaçant que des changements soudains de prix entre les
       mois, et une forte augmentation des prix sur une courte période serait un facteur influent me poussant à examiner
@@ -1121,7 +1121,8 @@ Il existe de nombreuses façons de traiter les variables asymétriques. Nous pou
 
      Regardons maintenant comment toutes les variables du modèle sont corrélées. """)
 
-    df_copy = df.drop(['Unnamed: 0', 'id', 'price_date_x', 'price_date_y', 'price_date'], axis=1)
+    #df_copy = df.drop(['Unnamed: 0', 'id', 'price_date_x', 'price_date_y', 'price_date'], axis=1)
+    df_copy = df.drop(['id', 'price_date_x', 'price_date_y', 'price_date'], axis=1)
     # display_data_types_info(df)
     # st.dataframe(df.head(3))
     correlation = df_copy.corr()
@@ -1192,21 +1193,21 @@ Cependant, certains inconvénients du classificateur de forêt aléatoire compre
     model.fit(X_train, y_train)"""
     st.code(code_model2, language="python")
     st.subheader("Evaluation")
-    st.markdown(""" Évaluons maintenant à quel point ce modèle entraîné est capable de prédire les valeurs de l'ensemble de données de test.
+    #st.markdown(""" Évaluons maintenant à quel point ce modèle entraîné est capable de prédire les valeurs de l'ensemble de données de test.
 
-Nous allons utiliser 3 métriques pour évaluer les performances :
+#Nous allons utiliser 3 métriques pour évaluer les performances :
 
-- Précision = le rapport des observations correctement prédites sur l'ensemble des observations
-- Précision = la capacité du classificateur à ne pas étiqueter un échantillon négatif comme positif
-- Rappel = la capacité du classificateur à trouver tous les échantillons positifs
+#- Précision = le rapport des observations correctement prédites sur l'ensemble des observations
+#- Précision = la capacité du classificateur à ne pas étiqueter un échantillon négatif comme positif
+#- Rappel = la capacité du classificateur à trouver tous les échantillons positifs
 
-La raison pour laquelle nous utilisons ces trois métriques est que la simple précision n'est pas toujours une bonne mesure à utiliser. Pour donner un exemple, supposons que vous prédisez des insuffisances cardiaques chez des patients à l'hôpital et qu'il y avait 100 patients sur 1000 qui avaient une insuffisance cardiaque.
+#La raison pour laquelle nous utilisons ces trois métriques est que la simple précision n'est pas toujours une bonne mesure à utiliser. Pour donner un exemple, supposons que vous prédisez des insuffisances cardiaques chez des patients à l'hôpital et qu'il y avait 100 patients sur 1000 qui avaient une insuffisance cardiaque.
 
-Si vous avez prédit correctement 80 sur 100 (80%) des patients qui avaient effectivement une insuffisance cardiaque, vous pourriez penser que vous avez bien fait ! Cependant, cela signifie également que vous avez prédit 20 erreurs et quelles pourraient être les implications de prédire ces 20 patients restants de manière incorrecte ? Peut-être qu'ils passent à côté d'un traitement vital pour sauver leur vie.
+#Si vous avez prédit correctement 80 sur 100 (80%) des patients qui avaient effectivement une insuffisance cardiaque, vous pourriez penser que vous avez bien fait ! Cependant, cela signifie également que vous avez prédit 20 erreurs et quelles pourraient être les implications de prédire ces 20 patients restants de manière incorrecte ? Peut-être qu'ils passent à côté d'un traitement vital pour sauver leur vie.
 
-De plus, quelle est l'impact de prédire des cas négatifs comme positifs (personnes n'ayant pas une insuffisance cardiaque mais étant prédites positives) ? Peut-être qu'un grand nombre de faux positifs signifie que des ressources sont utilisées pour les mauvaises personnes et beaucoup de temps est gaspillé alors qu'ils auraient pu aider les véritables personnes souffrant d'insuffisance cardiaque.
+#De plus, quelle est l'impact de prédire des cas négatifs comme positifs (personnes n'ayant pas une insuffisance cardiaque mais étant prédites positives) ? Peut-être qu'un grand nombre de faux positifs signifie que des ressources sont utilisées pour les mauvaises personnes et beaucoup de temps est gaspillé alors qu'ils auraient pu aider les véritables personnes souffrant d'insuffisance cardiaque.
 
-Il s'agit simplement d'un exemple, mais il illustre pourquoi d'autres métriques de performance sont nécessaires, telles que la précision et le rappel, qui sont de bonnes mesures à utiliser dans un scénario de classification..""")
+#Il s'agit simplement d'un exemple, mais il illustre pourquoi d'autres métriques de performance sont nécessaires, telles que la précision et le rappel, qui sont de bonnes mesures à utiliser dans un scénario de classification..""") */
 
 
     st.write(f"True positives: {tp}")
@@ -1218,30 +1219,30 @@ Il s'agit simplement d'un exemple, mais il illustre pourquoi d'autres métriques
     st.write(f"Precision: {metrics.precision_score(y_test, predictions)}")
     st.write(f"Recall: {metrics.recall_score(y_test, predictions)}")
 
-    st.markdown(""" En examinant ces résultats, quelques points à souligner :
+    #st.markdown(""" En examinant ces résultats, quelques points à souligner :
 
-Remarque : Si vous exécutez ce notebook vous-même, vous pourriez obtenir des réponses légèrement différentes !
+#Remarque : Si vous exécutez ce notebook vous-même, vous pourriez obtenir des réponses légèrement différentes !
 
-Dans l'ensemble du jeu de test, environ 10% des lignes correspondent à des clients résiliants (churn = 1).
-En ce qui concerne les vrais négatifs, nous en avons 3282 sur 3286. Cela signifie que sur l'ensemble des cas négatifs (churn = 0), nous avons prédit correctement 3282 comme négatifs (d'où le nom de vrais négatifs). C'est excellent !
-En ce qui concerne les faux négatifs, cela correspond aux cas où nous avons prédit qu'un client ne résilierait pas (churn = 0) alors qu'en réalité il a résilié (churn = 1). Ce nombre est assez élevé à 348, nous voulons réduire autant que possible le nombre de faux négatifs, donc cela devrait être abordé lors de l'amélioration du modèle.
-En ce qui concerne les faux positifs, cela correspond aux cas où nous avons prédit qu'un client résilierait alors qu'en réalité il n'a pas résilié. Pour cette valeur, nous pouvons voir qu'il y a 4 cas, ce qui est excellent !
-Pour les vrais positifs, nous pouvons voir qu'au total, nous avons 366 clients qui ont résilié dans l'ensemble de données de test. Cependant, nous ne sommes capables d'identifier correctement que 18 de ces 366, ce qui est très faible.
-En examinant le score de précision, il est très trompeur ! C'est pourquoi l'utilisation de la précision et du rappel est importante. Le score de précision est élevé, mais il ne nous dit pas toute l'histoire.
-En examinant le score de rappel, cela montre un score de 0,82, ce qui n'est pas mal, mais pourrait être amélioré.
-Cependant, le rappel montre que le classificateur a une très faible capacité à identifier les échantillons positifs. Cela serait la principale préoccupation pour l'amélioration de ce modèle !
-En résumé, nous sommes capables d'identifier très précisément les clients qui ne résilient pas, mais nous ne sommes pas capables de prédire les cas où les clients résilient ! Ce que nous constatons, c'est qu'un pourcentage élevé de clients sont identifiés comme ne résiliant pas alors qu'ils devraient être identifiés comme résiliant. Cela me fait penser que l'ensemble actuel de fonctionnalités n'est pas assez discriminant pour distinguer clairement les résiliants des non-résiliants.
+#Dans l'ensemble du jeu de test, environ 10% des lignes correspondent à des clients résiliants (churn = 1).
+#En ce qui concerne les vrais négatifs, nous en avons 3282 sur 3286. Cela signifie que sur l'ensemble des cas négatifs (churn = 0), nous avons prédit correctement 3282 comme négatifs (d'où le nom de vrais négatifs). C'est excellent !
+#En ce qui concerne les faux négatifs, cela correspond aux cas où nous avons prédit qu'un client ne résilierait pas (churn = 0) alors qu'en réalité il a résilié (churn = 1). Ce nombre est assez élevé à 348, nous voulons réduire autant que possible le nombre de faux négatifs, donc cela devrait être abordé lors de l'amélioration du modèle.
+#En ce qui concerne les faux positifs, cela correspond aux cas où nous avons prédit qu'un client résilierait alors qu'en réalité il n'a pas résilié. Pour cette valeur, nous pouvons voir qu'il y a 4 cas, ce qui est excellent !
+#Pour les vrais positifs, nous pouvons voir qu'au total, nous avons 366 clients qui ont résilié dans l'ensemble de données de test. Cependant, nous ne sommes capables d'identifier correctement que 18 de ces 366, ce qui est très faible.
+#En examinant le score de précision, il est très trompeur ! C'est pourquoi l'utilisation de la précision et du rappel est importante. Le score de précision est élevé, mais il ne nous dit pas toute l'histoire.
+#En examinant le score de rappel, cela montre un score de 0,82, ce qui n'est pas mal, mais pourrait être amélioré.
+#Cependant, le rappel montre que le classificateur a une très faible capacité à identifier les échantillons positifs. Cela serait la principale préoccupation pour l'amélioration de ce modèle !
+#En résumé, nous sommes capables d'identifier très précisément les clients qui ne résilient pas, mais nous ne sommes pas capables de prédire les cas où les clients résilient ! Ce que nous constatons, c'est qu'un pourcentage élevé de clients sont identifiés comme ne résiliant pas alors qu'ils devraient être identifiés comme résiliant. Cela me fait penser que l'ensemble actuel de fonctionnalités n'est pas assez discriminant pour distinguer clairement les résiliants des non-résiliants.
 
-Un data scientist à ce stade reviendrait à l'ingénierie des fonctionnalités pour essayer de créer des fonctionnalités plus prédictives. Il pourrait également expérimenter avec l'optimisation des paramètres dans le modèle pour améliorer les performances. Pour l'instant, plongeons un peu plus dans la compréhension du modèle. """)
+#Un data scientist à ce stade reviendrait à l'ingénierie des fonctionnalités pour essayer de créer des fonctionnalités plus prédictives. Il pourrait également expérimenter avec l'optimisation des paramètres dans le modèle pour améliorer les performances. Pour l'instant, plongeons un peu plus dans la compréhension du modèle. """)
     st.subheader("Interpretation du modèle")
     st.markdown("""
-    Une manière simple de comprendre les résultats d'un modèle est d'examiner les importances des fonctionnalités. 
-    Les importances des fonctionnalités indiquent l'importance d'une fonctionnalité dans le modèle prédictif. 
-    Il existe plusieurs façons de calculer l'importance des fonctionnalités, mais avec le classificateur Random Forest,
-     nous sommes en mesure d'extraire les importances des fonctionnalités à l'aide de la méthode intégrée dans 
-     le modèle entraîné. Dans le cas du Random Forest, l'importance des fonctionnalités représente le nombre de fois 
-     que chaque fonctionnalité est utilisée pour diviser l'ensemble des arbres.
-    """)
+    Une manière simple de comprendre les résultats d'un modèle est d'examiner les features importances. """)
+    #Les les features importances indiquent l'importance d'une fonctionnalité dans le modèle prédictif.
+    #Il existe plusieurs façons de calculer l'importance des fonctionnalités, mais avec le classificateur Random Forest,
+     #nous sommes en mesure d'extraire les importances des fonctionnalités à l'aide de la méthode intégrée dans
+     #le modèle entraîné. Dans le cas du Random Forest, l'importance des fonctionnalités représente le nombre de fois
+     #que chaque fonctionnalité est utilisée pour diviser l'ensemble des arbres.
+     #""")
 
     fig, ax = plt.subplots(figsize=(15, 25))
     plt.title('Feature Importances')
@@ -1343,13 +1344,16 @@ if selected_option == "Impact Business de la Remise de 20%" :
 
     st.markdown(""" 
     **Note:**
-    In this case, it doesn't make sense to prioritize large-revenue customers, since the overall revenue delta is much 
-    lower than when targeting everyone. However, this is only the case here since the intervention doesn't depend on 
-    the number of customers (simply adjusting prices). The interventions usually go beyond simply adjusting prices to 
-    prevent churn.
-    There may be the option of intensifying the customer relation, adding key account managers, or other interventions 
-    that do incur costs depending on how many customers are targeted. In that case, it may be benefitial to target only 
-    a subset of customers to save on these costs, even if the delta in the figure above is reduced.
+    Dans ce cas, il n'a pas de sens de donner la priorité aux clients à revenu élevé, car la variation globale des 
+    revenus est bien inférieure à celle obtenue en ciblant tout le monde. Cependant, ceci n'est valable que dans ce 
+    cas particulier, car l'intervention ne dépend pas du nombre de clients (il s'agit simplement d'ajuster les prix). 
+    Les interventions vont généralement au-delà de la simple modification des prix pour prévenir la résiliation.
+
+
+     Il peut y avoir l'option d'intensifier la relation client, d'ajouter des gestionnaires de comptes clés ou 
+     d'autres interventions qui entraînent des coûts en fonction du nombre de clients ciblés. Dans ce cas, il peut être
+      bénéfique de cibler uniquement un sous-ensemble de clients afin de réaliser des économies sur ces coûts, même 
+      si la variation dans le chiffre ci-dessus est réduite.
     """)
     st.subheader(" Utilisons les prévisions plutôt que les churns réels")
 
@@ -1390,14 +1394,18 @@ En fait, nous pouvons prédire la probabilité de résiliation pour chaque clien
 Pour aller plus loin, nous devrons essayer de :
 
 - Modifier le niveau de remise offert globalement
-- Prédire la réponse des clients à cette remise (c'est-à-dire la probabilité de résiliation) en fonction de la manière dont cette remise affecte leurs prix, le chiffre d'affaires et la marge.
-- Faites attention à ce que nous ayons appliqué la remise à toutes les variables concernées. Pour faciliter cela, nous pourrions vouloir réentraîner notre modèle en utilisant un ensemble de variables plus simple où nous savons que nous pouvons intégrer correctement la remise dans les prédicteurs.
+- Prédire la réponse des clients à cette remise (c'est-à-dire la probabilité de résiliation) en fonction de la manière 
+dont cette remise affecte leurs prix, le chiffre d'affaires et la marge.
+- Faites attention à ce que nous ayons appliqué la remise à toutes les variables concernées. Pour faciliter cela,
+ nous pourrions vouloir réentraîner notre modèle en utilisant un ensemble de variables plus simple où nous savons que
+  nous pouvons intégrer correctement la remise dans les prédicteurs.
 - Trouver le niveau de remise qui équilibre la rétention des clients par rapport au coût des faux positifs.
 
 En fait, cela pourrait être transformé en un problème d'optimisation 2D :
 
-- Objectif : maximiser le chiffre d'affaires net (c'est-à-dire en incluant les avantages des vrais positifs et le coût des faux positifs)
-- Variables de décision :
+  - Objectif : maximiser le chiffre d'affaires net (c'est-à-dire en incluant les avantages des vrais positifs et le 
+  coût des faux positifs)
+  - Variables de décision :
   - Niveau de remise offert, et
   - Fraction de personnes à qui une remise est offerte
 
