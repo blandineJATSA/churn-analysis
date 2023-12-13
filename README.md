@@ -118,7 +118,7 @@ Ainsi, décider où fixer le seuil pour maximiser le chiffre d'affaires.
 
 • La consommation annuelle, la consommation prévue et la marge nette sont les trois principaux moteurs.
 
-- ** 🔖 Stratégie de remise de 20% est efficace mais seulement si elle est ciblée de manière appropriée**
+- **🔖 Stratégie de remise de 20% est efficace mais seulement si elle est ciblée de manière appropriée**
 
 • Offrir une remise uniquement aux clients de grande valeur avec une probabilité de désabonnement élevée
 
