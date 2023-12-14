@@ -85,7 +85,7 @@ Une autre chose utile à examiner est la corrélation entre toutes les variables
 
 3- Construire les modèles de machine learning : 
  
-Nous nous concentrons uniquement sur l'entraînement d'un Random Forest ([Feature engineering.ipynb](modelling_model.ipynb)) 
+Nous nous concentrons uniquement sur l'entraînement d'un Random Forest ([modelling_mode.ipynb](modelling_model.ipynb)) 
 
 4- Evaluation du modèles et interprétations
 
