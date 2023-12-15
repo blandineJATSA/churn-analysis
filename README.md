@@ -16,7 +16,9 @@ PowerCo, un fournisseur majeur de gaz et d'électricité, cherche à comprendre 
 Ce projet s'inscrit dans la volonté de PowerCo d'optimiser sa stratégie de rétention des clients PME et de renforcer sa position sur le marché de l'énergie.
 
 Plus spécifiquement, elle veut  comprendre :
+
 Hypothèse 1 :   la sensibilité au prix est le principal facteur de churn.
+
 Hypothèse 2 : Une remise de 20% peut empêcher un client à fort risque de résiliation contrat de partir.
 
 <a name="analyse-besoin-client"></a>
